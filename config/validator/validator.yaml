@@ -1,0 +1,25 @@
+App\Entity\City:
+  properties:
+    longitude:
+      - Range:
+          min: -180
+          max: 180
+          groups: [ 'edit', 'create' ]
+    latitude:
+      - Range:
+          min: -90
+          max: 90
+          groups: [ 'edit', 'create' ]
+
+App\Entity\Weather:
+  properties:
+    humidity:
+      - Range:
+          min: 0
+          max: 100
+          groups: [ 'edit', 'create' ]
+    windSpeed:
+      - Range:
+          min: 0
+          max: 100
+          groups: [ 'edit', 'create' ]

@@ -83,4 +83,16 @@ class Weather
 
         return $this;
     }
+
+    public function getWindSpeed(): ?string
+    {
+        return $this->windSpeed;
+    }
+
+    public function setWindSpeed(string $windSpeed): static
+    {
+        $this->windSpeed = $windSpeed;
+
+        return $this;
+    }
 }

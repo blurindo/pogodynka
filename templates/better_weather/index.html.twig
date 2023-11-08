@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Weather index{% endblock %}
+
+{% block body %}
+    <h1>Weather index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>TemperatureInCelsius</th>
+                <th>Humidity</th>
+                <th>WindSpeed</th>
+                <th>Date</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for weather in weather %}
+            <tr>
+                <td>{{ weather.id }}</td>
+                <td>{{ weather.temperatureInCelsius }}</td>
+                <td>{{ weather.humidity }}</td>
+                <td>{{ weather.windSpeed }}</td>
+                <td>{{ weather.Date ? weather.Date|date('Y-m-d H:i:s') : '' }}</td>
+                <td>
+                    <a href="{{ path('app_better_weather_show', {'id': weather.id}) }}">show</a>
+                    <a href="{{ path('app_better_weather_edit', {'id': weather.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_better_weather_new') }}">Create new</a>
+{% endblock %}
