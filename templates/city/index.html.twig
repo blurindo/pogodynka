@@ -27,8 +27,12 @@
                 <td>{{ city.longitude }}</td>
                 <td>{{ city.zipCode }}</td>
                 <td>
-                    <a href="{{ path('app_city_show', {'id': city.id}) }}">show</a>
-                    <a href="{{ path('app_city_edit', {'id': city.id}) }}">edit</a>
+                    {% if is_granted('ROLE_LOCATION_SHOW') %}
+                        <a href="{{ path('app_city_show', {'id': city.id}) }}">show</a>
+                    {% endif %}
+                    {% if is_granted('ROLE_LOCATION_EDIT') %}
+                        <a href="{{ path('app_city_edit', {'id': city.id}) }}">edit</a>
+                    {% endif %}
                 </td>
             </tr>
         {% else %}
@@ -39,5 +43,7 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_city_new') }}">Create new</a>
+    {% if is_granted('ROLE_LOCATION_NEW') %}
+        <a href="{{ path('app_city_new') }}">Create new</a>
+    {% endif %}
 {% endblock %}
